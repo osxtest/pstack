@@ -14,22 +14,22 @@ Never copy Cursor's files onto `main` directly. That erases the edits.
 1. Copy Cursor's latest `pstack/` folder onto the `upstream` branch:
 
    ```bash
-   git clone --depth 1 --filter=blob:none --sparse https://github.com/cursor/plugins.git /root/cursor-plugins
-   git -C /root/cursor-plugins sparse-checkout set pstack
+   git clone --depth 1 --filter=blob:none --sparse https://github.com/cursor/plugins.git "$HOME/cursor-plugins"
+   git -C "$HOME/cursor-plugins" sparse-checkout set pstack
    git switch upstream
-   rsync -a --delete --exclude .git --exclude MIRROR.md /root/cursor-plugins/pstack/ ./
+   rsync -a --delete --exclude .git --exclude MIRROR.md "$HOME/cursor-plugins/pstack/" ./
    ```
 
-2. Link the four `cursor-team-kit` skill directories onto `upstream`, then commit the links. Keep the source checkout at `/root/cursor-plugins` so the links remain valid:
+2. Link the four `cursor-team-kit` skill directories onto `upstream`, then commit the links. Keep the source checkout at `$HOME/cursor-plugins` so the links remain valid:
 
    ```bash
-   git -C /root/cursor-plugins sparse-checkout set cursor-team-kit
+   git -C "$HOME/cursor-plugins" sparse-checkout set cursor-team-kit
    for skill in deslop control-cli control-ui verify-this; do
      rm -rf "./skills/$skill"
-     ln -s "/root/cursor-plugins/cursor-team-kit/skills/$skill" "./skills/$skill"
+     ln -s "$HOME/cursor-plugins/cursor-team-kit/skills/$skill" "./skills/$skill"
    done
    git add -A
-   git commit -m "upstream: cursor/plugins pstack and cursor-team-kit skills @ $(git -C /root/cursor-plugins rev-parse --short HEAD)"
+   git commit -m "upstream: cursor/plugins pstack and cursor-team-kit skills @ $(git -C "$HOME/cursor-plugins" rev-parse --short HEAD)"
    ```
 
 3. Merge it into `main`. Git applies only what changed upstream and keeps the mirror's edits:

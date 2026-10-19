@@ -21,7 +21,7 @@ The CLI shows every skill in a list you can search. Select the skills you want, 
 
 These skills don't call other pstack skills, so each one works alone:
 
-`unslop`, `bro`, `how`, `tdd`, `typescript-best-practices`, `arena`, `swarm`, `interrogate`, `reflect`, `show-me-your-work`, `figure-it-out`, `automate-me`, `correct`, `benchmark-checklist`, `in-your-own-words`, `sharpen`, `deslop`, `control-cli`
+`unslop`, `bro`, `how`, `tdd`, `typescript-best-practices`, `arena`, `swarm`, `interrogate`, `reflect`, `show-me-your-work`, `figure-it-out`, `automate-me`, `correct`, `benchmark-checklist`, `in-your-own-words`, `sharpen`
 
 Some skills call other skills. Install these together:
 
@@ -34,8 +34,6 @@ Some skills call other skills. Install these together:
 | `blast-radius` | `arena`, `how`, `why`, `unslop` |
 | `create-verification-skill` | `maintain-verification-skill` |
 | `ketchup` | `bro` |
-| `control-ui` | `verify-this`, `control-cli` |
-| `verify-this` | `control-cli`, `control-ui` |
 | `poteto-mode` | all `principle-*` skills and most of the other skills |
 | `poteto-help` | the skills you want help with |
 
@@ -44,8 +42,6 @@ Skills that spawn subagents point to the Subagents section of `poteto-mode` to p
 ## What this mirror changes
 
 Many skills were Cursor-specific. They've been rewritten to work in any harness.
-
-This mirror also includes `deslop`, `control-cli`, `control-ui`, and `verify-this` from `cursor-team-kit` to supply the external skills described in [not shipped here](#not-shipped-here).
 <!-- mirror:end -->
 
 ---

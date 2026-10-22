@@ -102,6 +102,8 @@ You own every subagent's work. Review the diff and write your own summary, don't
 
 ## Harness
 
+In Pi, read the [Pi adapter](../../docs/harness/pi.md) once per session before executing harness-specific instructions. Apply its mappings to this skill, its playbooks, and any pstack skills it invokes. Do not pass Cursor-specific tool names or fields literally when the adapter specifies a translation.
+
 pstack was written for Cursor. In another harness (Claude Code, Codex, Pi, OpenCode, and others), read Cursor-specific instructions in this skill, its playbooks, and the routed skills through these mappings. If you can't tell which harness you are, check which of the paths below exist.
 
 - **Subagents.** `Task` means your subagent tool: `Agent` in Claude Code (`subagent_type: general-purpose`), `task` in OpenCode (`subagent_type: general`), `spawn_agent` in Codex. Drop parameters your tool doesn't have. `environment: "cloud"` means a Cursor cloud agent. Elsewhere, run that agent locally in its own worktree. If your harness has no subagent tool, as in Pi without an extension, do each delegated step yourself, one after another.

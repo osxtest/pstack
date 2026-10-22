@@ -8,15 +8,15 @@ These definitions adapt pstack's agent prompts for pi-subagents. Upstream prompt
 | --- | --- | --- |
 | [poteto-agent.md](poteto-agent.md) | [agents/poteto-agent.md](../agents/poteto-agent.md) | `c3ed187a871600cf496f954417634587df9fdf55` |
 | [comment-sicko.md](comment-sicko.md) | [agents/comment-sicko.md](../agents/comment-sicko.md) | `f3afb7057ff87b9cb1eff0ada0c6b5c7d1ecc5fa` |
-| [generalPurpose.md](generalPurpose.md) | Adapter-owned. No upstream agent file. | Repository baseline `13d9db81250162bf5a466b1a41e98f21cd11e7a7`. |
+| [general-purpose.md](general-purpose.md) | Adapter-owned. No upstream agent file. | Repository baseline `13d9db81250162bf5a466b1a41e98f21cd11e7a7`. |
 
 The prompt bodies are deliberate translations, not automatically synchronized copies. Adapter-loading instructions live in each definition's Pi section so fresh children read the shared guide in their own sessions. Parent-session loading starts in poteto-mode or an explicit standalone-skill setup instruction, not a root or global agent file. Pi frontmatter controls tools, context, and background execution. Models remain selected by the parent.
 
 Poteto delegates require the parent to supply the absolute poteto-mode skill path. Comment Sicko receives scoped file paths or a readable diff file. It reports proposed deletions without changing files. Its original prompt body is preserved, with Pi limitations in a separate section.
 
-`generalPurpose` is a minimal local compatibility agent, not an extracted Cursor or Claude Code prompt. It uses Pi's normal base prompt and the specialist task supplied by the parent.
+`general-purpose` is a minimal local compatibility agent, not an extracted Cursor or Claude Code prompt. It uses Pi's normal base prompt and the specialist task supplied by the parent.
 
-None of these definitions receives MCP tools. Comment Sicko alone enables `allowNestedSubagents` and restricts descendants to `generalPurpose` for how and why investigations. Poteto delegates and general-purpose children do not themselves delegate. Depth and inherited capability ceilings still apply. Comment Sicko's own file tools are read-only, but its general-purpose children have Bash and write tools. Each child task must forbid edits. This is not a read-only sandbox for the whole subtree.
+None of these definitions receives MCP tools. Comment Sicko alone enables `allowNestedSubagents` and restricts descendants to `general-purpose` for how and why investigations. Poteto delegates and general-purpose children do not themselves delegate. Depth and inherited capability ceilings still apply. Comment Sicko's own file tools are read-only, but its general-purpose children have Bash and write tools. Each child task must forbid edits. This is not a read-only sandbox for the whole subtree.
 
 ## Register the agents
 
@@ -32,7 +32,7 @@ None of these definitions receives MCP tools. Comment Sicko alone enables `allow
 ```
 
 3. Run `/reload` in Pi.
-4. Call `subagent` with `{"action":"list"}`. Confirm `poteto-agent`, `generalPurpose`, and `comment-sicko` are listed.
+4. Call `subagent` with `{"action":"list"}`. Confirm `poteto-agent`, `general-purpose`, and `comment-sicko` are listed.
 
 These user-level settings make the definitions available outside the pstack checkout. Adjust the absolute path if the checkout moves. See the [Pi adapter](../docs/harness/pi.md) for launch translations and limitations.
 

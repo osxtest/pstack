@@ -30,7 +30,7 @@ subagent({ action: "models" })
 subagent({ action: "guide", options: { topic: "tool-reference/execution-parameters" } })
 ```
 
-The registered agents are `poteto-agent`, `generalPurpose`, and `comment-sicko`. The first requires an absolute poteto-mode skill path in its task. The second does not automatically load poteto-mode. The third limits its own file access to read, grep, find, and ls. It can launch `generalPurpose` for how and why investigations. Pi also supplies nested-delegation and supervisor tools. Supply its scoped files or a readable diff file and the absolute paths of any required skills. The parent obtains a default Git diff when the calling skill requires one.
+The registered agents are `poteto-agent`, `general-purpose`, and `comment-sicko`. The first requires an absolute poteto-mode skill path in its task. The second does not automatically load poteto-mode. The third limits its own file access to read, grep, find, and ls. It can launch `general-purpose` for how and why investigations. Pi also supplies nested-delegation and supervisor tools. Supply its scoped files or a readable diff file and the absolute paths of any required skills. The parent obtains a default Git diff when the calling skill requires one.
 
 ## Launch fields
 
@@ -78,7 +78,7 @@ The definitions do not pin model or thinking defaults. `comment-sicko` has `acce
 
 Pi-subagents supports nested delegation through `allowNestedSubagents: true` or an explicit `subagent` tool entry. An empty `allowedAgents` list denies descendants even when nesting is enabled. Inherited depth and capability ceilings remain authoritative.
 
-Comment Sicko enables nesting and explicitly lists `subagent` alongside its file tools. With an explicit tool allowlist, the installed runtime still filters available tools through that list. The flag authorizes nesting, but the callable tool must survive that filter. Comment Sicko permits only `generalPurpose` children for how and why investigations. Its own tools remain read-only. Its children have Bash and write tools, so each task must explicitly forbid edits and preserve the parent's scope. This is not an enforced read-only sandbox for the subtree. `generalPurpose` cannot launch further descendants in this configuration.
+Comment Sicko enables nesting and explicitly lists `subagent` alongside its file tools. With an explicit tool allowlist, the installed runtime still filters available tools through that list. The flag authorizes nesting, but the callable tool must survive that filter. Comment Sicko permits only `general-purpose` children for how and why investigations. Its own tools remain read-only. Its children have Bash and write tools, so each task must explicitly forbid edits and preserve the parent's scope. This is not an enforced read-only sandbox for the subtree. `general-purpose` cannot launch further descendants in this configuration.
 
 The calling skills do not need different investigation prompts. Read this adapter before dispatch, translate their launch fields, and use the child-safe tool schema actually provided. Pass each child the required files, specialist prompt, model, and evidence requirements. Depth defaults to two in pi-subagents when no stricter setting applies. Do not assume Cursor's depth-three guarantee or increase global depth silently.
 

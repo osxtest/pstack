@@ -1,5 +1,5 @@
 ---
-name: generalPurpose
+name: general-purpose
 description: General-purpose child for the bounded task and specialist instructions supplied by the parent.
 systemPromptMode: append
 inheritProjectContext: true
